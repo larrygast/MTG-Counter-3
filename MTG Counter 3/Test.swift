@@ -11,6 +11,8 @@ import Combine
 
 struct SwiftUIView: View {
         @ObservedObject var userData = UserData()
+    @Binding var valueFromParent : Int
+    @State var count1 = 20
 var body: some View {
   
     
@@ -176,6 +178,7 @@ var body: some View {
                         self.userData.passive = true
                         self.userData.vanPressCounter = 0
                         self.userData.correctSequenceCounter = 0
+                        self.count1 = 20
                        
                     }
                         }
@@ -190,7 +193,7 @@ var body: some View {
 
         
         if userData.vanPress == false {
-        CounterButtonStack()
+            CounterButtonStack(valueFromParent: $count1)
             .colorInvert()
         }
         
@@ -399,6 +402,6 @@ var body: some View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView()
+        SwiftUIView(valueFromParent: .constant(20))
     }
 }

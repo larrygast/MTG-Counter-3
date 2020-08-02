@@ -13,7 +13,7 @@ import SwiftUI
 
 
 struct CounterButtonStack: View {
-    @State var count1 = 20
+    @Binding var valueFromParent : Int
   @State private var timer: Timer?
     @State var isLongPressing = false
      
@@ -31,7 +31,7 @@ struct CounterButtonStack: View {
                             
                             } else {
                                 //regularTap
-                                self.count1 -= 1
+                                self.valueFromParent -= 1
                                 
                             }
                           }, label: {
@@ -44,7 +44,7 @@ struct CounterButtonStack: View {
                                 self.isLongPressing = true
                                 //fastforward to Start Timer
                                 self.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
-                                    self.count1 -= 1
+                                    self.valueFromParent -= 1
                                 })
                             })
             
@@ -54,7 +54,7 @@ struct CounterButtonStack: View {
                       
 
                           
-            Text("\(count1)")
+            Text("\(valueFromParent)")
                             .font(.system(size: 100))
                             .fontWeight(.medium)
                                   .colorMultiply(.black)
@@ -71,7 +71,7 @@ struct CounterButtonStack: View {
                             
                             } else {
                                 //regularTap
-                                self.count1 += 1
+                                self.valueFromParent += 1
                                 
                             }
                           }, label: {
@@ -84,7 +84,7 @@ struct CounterButtonStack: View {
                                 self.isLongPressing = true
                                 //fastforward to Start Timer
                                 self.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
-                                    self.count1 += 1
+                                    self.valueFromParent += 1
                                 })
                             })
                           .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -103,7 +103,7 @@ struct CounterButtonStack: View {
 
 struct CounterButtonStack_Previews: PreviewProvider {
     static var previews: some View {
-        CounterButtonStack()
+        CounterButtonStack(valueFromParent: .constant(20))
     }
 }
 
