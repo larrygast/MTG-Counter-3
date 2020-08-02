@@ -9,10 +9,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var count1 = 20
+    
+      
     var body: some View {
-        Text("Hello, World!")
+        
+        VStack {
+            SwiftUIView()
+                .rotationEffect(.degrees(180))
+            SwiftUIView()
+            
+            
+            
+                        }
+    
     }
+    
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
