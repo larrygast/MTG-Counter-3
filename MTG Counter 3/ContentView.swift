@@ -11,22 +11,23 @@ import SwiftUI
 struct ContentView: View {
     
     @State var count1 = 20
+    @State var count2 = 20
     
-      
-    var body: some View {
+var body: some View {
+    
         
         VStack {
-            SwiftUIView()
+            SwiftUIView(valueFromParent: $count1)
                 .rotationEffect(.degrees(180))
-            SwiftUIView()
-            
-            
-            
-                        }
-    
+            SwiftUIView(valueFromParent: $count2)
+            }
+    .onAppear() {
+      UIApplication.shared.isIdleTimerDisabled = true
+        }
     }
-    
 }
+    
+
 
 
 struct ContentView_Previews: PreviewProvider {
